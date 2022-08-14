@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en-US">
+    <head>
+        <%- include("head.ejs") %>
+    </head>
+    <body>
+        <div class="min-vh-100 d-flex flex-column justify-content-between">
+            <div name="Wrapper">
+                <header>
+                  <%- include("header.ejs") %>
+                </header>
+                <div class="container-xxl p-3">
+                    <div class="row">
+                        <div class="col-12">
+                            <% if (message != undefined ? message  : '' ) { %>
+                              <div class="message-<%= typeStatus %>">
+                                <%= message %>
+                              </div>
+                            <% } %>
+                            <div class="text-center mb-3">
+                                <h2>Welcome to</h2>
+                                <img class="img-fluid col-md-8 col-lg-6" src="/images/vallhalla_Logo.png"/>
+                                <h3>"<span class="vallhalla">Time to mix drinks and change lives.</span>" - Jill</h3>
+                            </div>
+                            <h5>This is an fanmade website based on the game VA-11 HALL-A Cyberpunk Bartender Action. You can find the official game developers website <a href="https://sukeban.moe/">here</a>.</h5>
+                            <h5>I am making this website to better understand interactions between front-end and back-end.</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="d-flex flex-wrap align-items-center pt-3 mt-3">
+                <div class="col-12 d-flex align-items-center justify-content-center">
+                    <p>© 2022 Neerosh</p>
+                </div>
+            </footer>
+        </div>
+  </body>
+</html>

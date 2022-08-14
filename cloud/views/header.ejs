@@ -1,0 +1,82 @@
+<nav class="navbar navbar-expand-md navbar-dark">
+    <div class="container-fluid">
+        <a class="nav-link nav-home" href="/">
+            <img class="img-logo" src="/images/vallhalla_Logo.png"/>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav navbar-dark me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/drinks">
+                        Drinks
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/staff">
+                        Staff
+                    </a>
+                </li>
+            </ul>
+            <script>
+              const Back4App = {
+                  ApplicationID : "API_KEY",
+                  JavascriptID  : "JS_KEY"
+              };
+
+              Parse.initialize(Back4App.ApplicationID,Back4App.JavascriptID);
+              Parse.serverURL = "https://parseapi.back4app.com/";
+            </script>
+            <% if (user != undefined ? user  : '') { %>
+                <script>
+                  Parse.User.become("<%= user.user.sessionToken %>").then(function (user) {
+                    console.log("CurrentUser set.");
+                  }, function (error) {
+                    console.log(error.message);
+                  });
+                </script>
+                <ul id="navbar-user" class="navbar-nav navbar-dark">
+                    <li class="nav-item">
+                        <a class="nav-link">
+                            Welcome, <%= user.user.username %>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cart">
+                            Cart
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="logout-button">
+                            Logout
+                        </a>
+                    </li>
+                    <script>
+                      document.getElementById("logout-button").addEventListener("click", async function () {
+                         try{
+                          await Parse.User.logOut();
+                            location.replace("./users/logout");
+                         } catch(err){
+                            console.log(err.message);
+                         }
+                      });
+                    </script>
+                </ul>
+            <% } else { %>
+                <ul id="navbar-public" class="navbar-nav navbar-dark">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/users/create-account">
+                            Create Account
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/users/login">
+                            Login
+                        </a>
+                    </li>
+                </ul>
+            <% } %>
+        </div>
+    </div>
+</nav>

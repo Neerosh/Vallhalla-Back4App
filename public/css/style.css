@@ -1,0 +1,181 @@
+@font-face {
+    font-family: CyberpunkWaifus;
+    src: url(../fonts/CyberpunkWaifus.woff);
+  }
+
+html, body{
+    background-color: #262331;
+    font-family: CyberpunkWaifus;
+    color: white;
+}
+
+footer{
+    background-color: black;
+    border-top: outset #41394C;
+}
+
+nav{
+    background-color: black;
+    border-bottom: inset #41394C;
+}
+
+.nav-home{
+    padding-right: 1rem;
+    font-size: 1.2rem;
+}
+
+.nav-link{
+    font-weight: 600;
+}
+
+.vallhalla{
+    color:#FF6281;
+}
+
+.img-logo{
+    max-height: 2.5rem;
+}
+
+.info{
+    color:#8edaff;
+}
+
+.message-error{
+    color: #ff2525;
+    background-color: black;
+    border: solid #41394C;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.message-info{
+    color: #25c3ff;
+    background-color: black;
+    border: solid #41394C;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.message-success{
+    color: #25ff42;
+    background-color: black;
+    border: solid #41394C;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/*Drinks*/
+.img-drink{
+    max-height: 2.5rem;
+}
+
+.drink-header{
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.drink-maininfo{
+    background-color:black;
+    border: solid #41394C;
+    padding: 0.5rem;
+    margin-top: 0.2rem;
+}
+
+.drink-categories{
+    margin-top: 0.5rem;
+}
+
+.order-block{
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    flex-wrap: nowrap;
+    font-size: 1.25rem;
+}
+
+.order-quantity-label{
+    color: white;
+    margin-right: 0.5rem;
+    margin-bottom: 0rem;
+}
+
+.order-quantity{
+    background-color: black;
+    color: white;
+    border: solid #41394C;
+    width: 4.5rem;
+    padding-left: 0.5rem;
+}
+
+.order-button{
+    background-color: #cccccc;
+    color: black;
+    border: solid #41394C;
+    padding: 0.1rem;
+    margin: 0rem;
+    margin-left: 0.5rem;
+    width: 6rem;
+    font-weight: 600;
+}
+
+.order-button:hover{
+    background-color: #ffffff;
+}
+
+/*Drinks Colors*/
+.adelhyde{
+    color:#E62645
+}
+
+.bronson-extract{
+    color:#F8C540
+}
+
+.flanergide{
+    color:#9FC872
+}
+
+.powdered-delta{
+    color:#8DA7E7
+}
+
+.karmotrine{
+    color:#88e1de
+}
+
+/*Create Account*/
+
+.form-create-account{
+    padding: 0.7rem;
+    border: solid #41394C;
+    background-color: black;
+}
+
+.label-create-account{
+    margin-bottom: 0rem;
+    margin-left: 0.3rem;
+}
+
+.field-create-account{
+    background-color: black;
+    color: white;
+    border: solid #41394C;
+    width: 100%;
+    padding-left: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.button-create-account{
+    background-color: #077020;
+    color: white;
+    border: solid #41394C;
+    padding: 0.1rem;
+    margin: 0rem;
+    width: 8rem;
+    font-size: 1.25rem;
+}
+.button-create-account:hover{
+    background-color: #009e25;
+}

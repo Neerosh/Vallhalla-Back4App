@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en-US">
+    <head>
+        <%- include("head.ejs") %>
+    </head>
+    <body>
+        <div class="min-vh-100 d-flex flex-column justify-content-between">
+            <div name="Wrapper">
+                <header>
+                    <%- include("header.ejs") %>
+                </header>
+                <div class="container-xxl p-3">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-8 mb-4">
+                            <h2>Create an Account</h2>
+                            <h5 class="info">An email is necessary for account verification.</h5>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                      <div class="col-12 col-md-8 mb-3 form-create-account">
+                        <form method="POST" action="/users/create-account">
+                          <h5 class="label-create-account">Username:</h5>
+                          <input name="userAccount" class="field-create-account" type="text" value="<%= infoUser.userAccount %>">
+                          <h5 class="label-create-account">E-mail:</h5>
+                          <input name="emailAccount" class="field-create-account" type="email" value="<%= infoUser.emailAccount %>">
+                          <h5 class="label-create-account">Password:</h5>
+                          <input name="passwordAccount" class="field-create-account" type="password" value="<%= infoUser.passwordAccount %>">
+                          <% if (accountMessage != undefined ? accountMessage  : '' ) { %>
+                              <div class="message-<%= typeStatus %>">
+                                <%= accountMessage %>
+                              </div>
+                          <% } %>
+                          <button name="register" class="button-create-account">Register</button>
+                        </form>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="d-flex flex-wrap align-items-center pt-3 mt-3">
+                <div class="col-12 d-flex align-items-center justify-content-center">
+                    <p>© 2022 Neerosh</p>
+                </div>
+            </footer>
+        </div>
+  </body>
+</html>

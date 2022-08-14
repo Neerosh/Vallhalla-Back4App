@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <%- include("head.ejs") %>
+  </head>
+  <body>
+    <div class="min-vh-100 d-flex flex-column justify-content-between">
+        <div Name="Wrapper">
+            <header>
+                <%- include("header.ejs") %>
+            </header>
+            <div class="container-xxl p-3">
+                <div class="row">
+                    <div class="col-12 mb-3 mt-3">
+                        <h2>Drink List</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="main" class="col-12">
+                        <!-- drinkList Rows -->
+                        <% if (typeStatus == 'error') { %>
+                          <div class="message-<%= typeStatus %>">
+                            <%= message %>
+                          </div>
+                        <% } %>
+                    </div> 
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            const drinkListString = `<%-drinkList%>`;
+            var drinkListlocal = JSON.parse(drinkListString);
+            window.onload = CheckDrinkList(drinkListlocal);
+            
+            function CheckDrinkList(drinkList){
+              
+              if (!drinkList.length){
+                CreateRowDrink(drinkList);
+                return;
+              }
+              
+              for (var d = 0; d < drinkList.length;  d++ ){
+                CreateRowDrink(drinkList[d]);
+              }
+            }
+  
+            function CreateRowDrink(drinkItem){
+                var container = document.getElementById('main');
+
+                    var listIngredients = '';
+                    for (var i = 0; i < drinkItem.Drink.Ingredients.length;  i++ ) { 
+                        if (i == drinkItem.Drink.Ingredients.length-1 && i > 0) {
+                            listIngredients += " and ";
+                        }
+                        if (i < drinkItem.Drink.Ingredients.length-1 && i > 0) { 
+                            listIngredients += ", ";
+                        }
+            
+                        switch (drinkItem.Drink.Ingredients[i].Name){
+                            case 'Adelhyde':
+                                listIngredients += '<span class="adelhyde">';
+                                break;
+                            case 'Bronson Extract':
+                                listIngredients += '<span class="bronson-extract">';
+                                break;
+                            case 'Flanergide':
+                                listIngredients += '<span class="flanergide">';
+                                break;
+                            case 'Powdered Delta':
+                                listIngredients += '<span class="powdered-delta">';
+                                break;
+                            case 'Karmotrine':
+                                listIngredients += '<span class="karmotrine">';
+                            break;
+                        }
+            
+                        if (drinkItem.Drink.Ingredients[i].Optional) {
+                            listIngredients +='(Optional) '+ drinkItem.Drink.Ingredients[i].Name;
+                        }else{
+                            listIngredients += drinkItem.Drink.Ingredients[i].Quantity+ ' ' +drinkItem.Drink.Ingredients[i].Name;
+                        }
+                        listIngredients +="</span>";
+                    }
+            
+                    var listCategories = '';
+                    for (var i = 0; i < drinkItem.Drink.Categories.length;  i++ ) {
+                        if (listCategories != '') { 
+                            listCategories += ", ";
+                        }
+                        listCategories += drinkItem.Drink.Categories[i];
+                    }
+            
+                    var drinkRow = `
+                    <div class="row drink-maininfo">
+                        <h3 class="drink-header">${drinkItem.Drink.Name} - ${drinkItem.Drink.Price}$</h3>
+                        <div class="col-3 col-sm-1">
+                            <img class="img-fluid mx-auto d-block" src="${drinkItem.Drink.ImageURL}">
+                        </div>
+                        <div class="col-9 col-sm-11">
+                            <h4>"<span class="vallhalla">${drinkItem.Drink.Description}</span>" - CALICOMP 1.1</h4>
+                            <h4>${listIngredients}</span>.
+                            </h4>
+                        </div>
+                        <h5 class="drink-categories">${listCategories}</h5>
+                    </div>`;
+                    container.innerHTML += drinkRow;
+                
+            }
+        </script>
+        <footer class="d-flex flex-wrap align-items-center pt-3 mt-3">
+            <div class="col-12 d-flex align-items-center justify-content-center">
+              <p>© 2022 Neerosh</p>
+            </div>
+        </footer>
+    </div>
+  </body>
+</html>
